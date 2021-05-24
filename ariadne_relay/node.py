@@ -17,7 +17,7 @@ NodeInstanceResolver = Union[NodeInstanceAwaitable, NodeInstanceCallable]
 INSTANCE_RESOLVER = "ariadne_relay_node_instance_resolver"
 
 
-class NodeType(RelayObjectType):
+class NodeObjectType(RelayObjectType):
     _resolve_id: NodeIdResolver
     _resolve_instance: Optional[NodeInstanceResolver]
 
@@ -79,7 +79,7 @@ async def resolve_node_query(
     instance_resolver_and_node_id = _get_instance_resolver_and_node_id(info, id)
     if instance_resolver_and_node_id:
         instance_resolver, node_id = instance_resolver_and_node_id
-        node_instance = instance_resolver(None, info, node_id)
+        node_instance = instance_resolver(node_id, info)
         if asyncio.iscoroutine(node_instance):
             node_instance = await node_instance
         return node_instance
@@ -95,7 +95,7 @@ def resolve_node_query_sync(
     instance_resolver_and_node_id = _get_instance_resolver_and_node_id(info, id)
     if instance_resolver_and_node_id:
         instance_resolver, node_id = instance_resolver_and_node_id
-        return instance_resolver(None, info, node_id)
+        return instance_resolver(node_id, info)
     return None
 
 
