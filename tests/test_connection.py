@@ -2,7 +2,7 @@ from ariadne import make_executable_schema
 from graphql import graphql_sync
 from graphql_relay import offset_to_cursor, to_global_id
 
-from ariadne_relay import NodeType, RelayQueryType
+from ariadne_relay import NodeObjectType, RelayQueryType
 
 
 def test_default_connection_factory() -> None:
@@ -46,7 +46,7 @@ def test_default_connection_factory() -> None:
     query_type = RelayQueryType()
     query_type.set_connection("test", lambda *_: test_nodes)
 
-    test_type = NodeType("Test")
+    test_type = NodeObjectType("Test")
 
     schema = make_executable_schema(type_defs, query_type, test_type)
 

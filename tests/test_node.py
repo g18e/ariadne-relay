@@ -2,7 +2,7 @@ from ariadne import InterfaceType, make_executable_schema, QueryType
 from graphql import graphql_sync
 from graphql_relay import to_global_id
 
-from ariadne_relay import NodeType, resolve_node_query_sync
+from ariadne_relay import NodeObjectType, resolve_node_query_sync
 
 
 def test_node_resolver() -> None:
@@ -29,7 +29,7 @@ def test_node_resolver() -> None:
         type_resolver=lambda obj, *_: obj["__typename"],
     )
 
-    test_type = NodeType(
+    test_type = NodeObjectType(
         "Test",
         instance_resolver=lambda _0, _1, id: test_nodes[id],
     )

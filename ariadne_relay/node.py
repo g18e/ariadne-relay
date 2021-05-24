@@ -17,7 +17,7 @@ NodeInstanceResolver = Union[NodeInstanceAwaitable, NodeInstanceCallable]
 INSTANCE_RESOLVER = "ariadne_relay_node_instance_resolver"
 
 
-class NodeType(RelayObjectType):
+class NodeObjectType(RelayObjectType):
     _resolve_id: NodeIdResolver
     _resolve_instance: Optional[NodeInstanceResolver]
 
