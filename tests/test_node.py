@@ -31,7 +31,7 @@ def test_node_resolver() -> None:
 
     test_type = NodeObjectType(
         "Test",
-        instance_resolver=lambda _0, _1, id: test_nodes[id],
+        instance_resolver=lambda id, *_: test_nodes[id],
     )
 
     schema = make_executable_schema(type_defs, query_type, node_interface, test_type)
