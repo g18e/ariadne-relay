@@ -1,3 +1,6 @@
+![Build Status](https://github.com/g18e/ariadne-relay/actions/workflows/tests.yml/badge.svg?branch=main)
+[![Codecov](https://codecov.io/gh/g18e/ariadne-relay/branch/main/graph/badge.svg)](https://codecov.io/gh/g18e/ariadne-relay)
+
 - - - - -
 
 # Ariadne-Relay
