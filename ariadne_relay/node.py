@@ -108,7 +108,8 @@ def _get_instance_resolver_and_node_id(
     except Exception as e:
         raise ValueError(f'Invalid ID "{raw_id}"') from e
     node_type = info.schema.type_map.get(node_type_name)
-    if node_type is None:
+    extensions = getattr(node_type, "extensions", None) or {}
+    instance_resolver = extensions.get(INSTANCE_RESOLVER)
+    if instance_resolver is None:
         return None
-    instance_resolver = getattr(node_type, "extensions", {}).get(INSTANCE_RESOLVER)
     return instance_resolver, node_id

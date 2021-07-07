@@ -34,6 +34,27 @@ def test_node_query(
     }
 
 
+def test_node_query_existing_non_node_typename(
+    client: TestClient, node_query: str
+) -> None:
+    global_id = to_global_id("Bar", "bar")
+    response = client.post(
+        "/",
+        json={
+            "query": node_query,
+            "variables": {
+                "id": global_id,
+            },
+        },
+    )
+    assert response.status_code == 200
+    assert response.json() == {
+        "data": {
+            "node": None,
+        }
+    }
+
+
 def test_connection_query(
     client: TestClient,
     connection_query: str,

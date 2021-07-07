@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Dict
 
-from ariadne import InterfaceType, make_executable_schema
+from ariadne import InterfaceType, make_executable_schema, ObjectType
 from graphql import GraphQLSchema
 import pytest
 
@@ -51,6 +51,10 @@ def type_defs() -> str:
             pageInfo: PageInfo!
             edges: [FooEdge]!
         }
+
+        type Bar {
+            id: String!
+        }
     """
 
 
@@ -82,15 +86,21 @@ def foo_type(foo_nodes: Dict[str, Foo]) -> NodeObjectType:
 
 
 @pytest.fixture
+def bar_type() -> ObjectType:
+    return ObjectType("Bar")
+
+
+@pytest.fixture
 def schema(
     type_defs: str,
     query_type: RelayQueryType,
     node_interface_type: InterfaceType,
     foo_type: NodeObjectType,
+    bar_type: ObjectType,
 ) -> GraphQLSchema:
     return make_executable_schema(
         type_defs,
-        [query_type, node_interface_type, foo_type],
+        [query_type, node_interface_type, foo_type, bar_type],
     )
 
 
