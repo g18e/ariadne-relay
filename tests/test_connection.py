@@ -6,7 +6,7 @@ from ariadne_relay import NodeObjectType, RelayQueryType
 from .conftest import Foo
 
 
-def test_default_connection_factory(type_defs: str, connection_query: str) -> None:
+def test_default_connection_factory(type_defs: str, foo_connection_query: str) -> None:
     test_nodes = [Foo(id=i) for i in range(10)]
 
     query_type = RelayQueryType()
@@ -16,7 +16,7 @@ def test_default_connection_factory(type_defs: str, connection_query: str) -> No
 
     schema = make_executable_schema(type_defs, query_type, test_type)
 
-    result = graphql_sync(schema, connection_query)
+    result = graphql_sync(schema, foo_connection_query)
     assert result.errors is None
     assert result.data == {
         "foos": {
