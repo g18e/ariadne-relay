@@ -21,7 +21,12 @@ from .connection import (
     SnakeCasePageInfoType,
 )
 from .interfaces import RelayInterfaceType
-from .node import NodeObjectType, resolve_node_query, resolve_node_query_sync
+from .node import (
+    NodeInterfaceType,
+    NodeObjectType,
+    resolve_node_query,
+    resolve_node_query_sync,
+)
 from .objects import RelayMutationType, RelayObjectType, RelayQueryType
 
 __all__ = [
@@ -34,6 +39,7 @@ __all__ = [
     "EdgeConstructor",
     "EdgeType",
     "from_global_id",
+    "NodeInterfaceType",
     "NodeObjectType",
     "PageInfo",
     "PageInfoConstructor",
