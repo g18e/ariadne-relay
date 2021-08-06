@@ -32,7 +32,7 @@ setup(
     long_description=README,
     long_description_content_type="text/markdown",
     license="BSD",
-    version="0.1.0a2",
+    version="0.1.0a3",
     url="https://github.com/g18e/ariadne-relay",
     packages=["ariadne_relay"],
     include_package_data=True,
