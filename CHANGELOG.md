@@ -11,6 +11,6 @@
 - Introduced `NodeInterfaceType` class
 
 
-## 0.1.0a4 (2021-08-06)
+## 0.1.0a4 (2022-01-17)
 
 - Better handling of invalid input in node resolvers
