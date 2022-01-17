@@ -3,6 +3,7 @@ from typing import Dict
 from ariadne import InterfaceType, make_executable_schema, QueryType
 from graphql import graphql_sync
 from graphql_relay import to_global_id
+from graphql_relay.utils import base64
 
 from ariadne_relay import NodeInterfaceType, RelayObjectType, RelayQueryType
 from .conftest import Foo, Qux
@@ -97,6 +98,71 @@ def test_non_node_typename(
 ) -> None:
     schema = make_executable_schema(type_defs, query_type, node_interface_type)
     global_id = to_global_id("Bar", "bar")
+    result = graphql_sync(schema, node_query, variable_values={"id": global_id})
+    assert result.errors is None
+    assert result.data == {"node": None}
+
+
+def test_invalid_encoding(
+    type_defs: str,
+    query_type: QueryType,
+    node_query: str,
+    node_interface_type: InterfaceType,
+) -> None:
+    schema = make_executable_schema(type_defs, query_type, node_interface_type)
+    global_id = "invalid"
+    result = graphql_sync(schema, node_query, variable_values={"id": global_id})
+    assert result.errors is None
+    assert result.data == {"node": None}
+
+
+def test_missing_separator(
+    type_defs: str,
+    query_type: QueryType,
+    node_query: str,
+    node_interface_type: InterfaceType,
+) -> None:
+    schema = make_executable_schema(type_defs, query_type, node_interface_type)
+    global_id = base64("foo")
+    result = graphql_sync(schema, node_query, variable_values={"id": global_id})
+    assert result.errors is None
+    assert result.data == {"node": None}
+
+
+def test_missing_typename(
+    type_defs: str,
+    query_type: QueryType,
+    node_query: str,
+    node_interface_type: InterfaceType,
+) -> None:
+    schema = make_executable_schema(type_defs, query_type, node_interface_type)
+    global_id = base64(":bar")
+    result = graphql_sync(schema, node_query, variable_values={"id": global_id})
+    assert result.errors is None
+    assert result.data == {"node": None}
+
+
+def test_missing_id(
+    type_defs: str,
+    query_type: QueryType,
+    node_query: str,
+    node_interface_type: InterfaceType,
+) -> None:
+    schema = make_executable_schema(type_defs, query_type, node_interface_type)
+    global_id = base64("foo:")
+    result = graphql_sync(schema, node_query, variable_values={"id": global_id})
+    assert result.errors is None
+    assert result.data == {"node": None}
+
+
+def test_empty_global_id(
+    type_defs: str,
+    query_type: QueryType,
+    node_query: str,
+    node_interface_type: InterfaceType,
+) -> None:
+    schema = make_executable_schema(type_defs, query_type, node_interface_type)
+    global_id = ""
     result = graphql_sync(schema, node_query, variable_values={"id": global_id})
     assert result.errors is None
     assert result.data == {"node": None}

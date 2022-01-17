@@ -184,8 +184,8 @@ def _get_instance_resolver_and_node_id(
 ) -> Optional[Tuple[NodeInstanceResolver, str]]:
     try:
         node_type_name, node_id = from_global_id(raw_id)
-    except Exception as e:
-        raise ValueError(f'Invalid ID "{raw_id}"') from e
+    except (TypeError, ValueError):
+        return None
     node_type = info.schema.type_map.get(node_type_name)
     if node_type:
         instance_resolver = _get_extension(node_type, INSTANCE_RESOLVER)
