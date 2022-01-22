@@ -1,6 +1,6 @@
 from typing import TypeVar, Union
 
-from graphql_relay.connection.connectiontypes import (
+from graphql_relay.connection.connection import (
     ConnectionType as ReferenceConnectionType,
 )
 

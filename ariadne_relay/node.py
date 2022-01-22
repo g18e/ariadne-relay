@@ -1,4 +1,4 @@
-import asyncio
+from inspect import isawaitable
 from typing import Any, Awaitable, Callable, cast, Optional, Tuple, Union
 
 from ariadne.types import Resolver
@@ -39,7 +39,7 @@ async def resolve_node_query(
     if instance_resolver_and_node_id:
         instance_resolver, node_id = instance_resolver_and_node_id
         node_instance = instance_resolver(node_id, info)
-        if asyncio.iscoroutine(node_instance):
+        if isawaitable(node_instance):
             node_instance = await node_instance
         return node_instance
     return None
@@ -100,10 +100,10 @@ class NodeType:
 
     async def _resolve_node_id_field(self, obj: Any, info: GraphQLResolveInfo) -> str:
         node_typename = self._resolve_node_typename(obj, info)
-        if asyncio.iscoroutine(node_typename):
+        if isawaitable(node_typename):
             node_typename = await cast(Awaitable[str], node_typename)
         node_id = self._resolve_node_id(obj, info)
-        if asyncio.iscoroutine(node_id):
+        if isawaitable(node_id):
             node_id = await cast(Awaitable[str], node_id)
         return to_global_id(cast(str, node_typename), cast(str, node_id))
 
@@ -182,10 +182,7 @@ def _get_instance_resolver_and_node_id(
     info: GraphQLResolveInfo,
     raw_id: str,
 ) -> Optional[Tuple[NodeInstanceResolver, str]]:
-    try:
-        node_type_name, node_id = from_global_id(raw_id)
-    except (TypeError, ValueError):
-        return None
+    node_type_name, node_id = from_global_id(raw_id)
     node_type = info.schema.type_map.get(node_type_name)
     if node_type:
         instance_resolver = _get_extension(node_type, INSTANCE_RESOLVER)

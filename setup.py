@@ -38,7 +38,8 @@ setup(
     include_package_data=True,
     install_requires=[
         "ariadne>=0.13.0",
-        "graphql-relay>=3.1.0",
+        "dataclasses; python_version < '3.7.0'",
+        "graphql-relay==3.1.3",
     ],
     extras_require={},
     classifiers=CLASSIFIERS,
