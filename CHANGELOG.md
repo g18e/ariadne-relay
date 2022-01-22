@@ -14,3 +14,9 @@
 ## 0.1.0a4 (2022-01-17)
 
 - Better handling of invalid input in node resolvers
+
+
+## 0.1.0a5 (2022-01-22)
+
+- Pin graphql-relay 3.1.3
+- Add python 3.10 to CLASSIFIERS in setup.py
