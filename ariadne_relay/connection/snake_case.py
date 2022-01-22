@@ -6,8 +6,8 @@ try:
 except ImportError:  # Python < 3.8
     from typing_extensions import Protocol  # type: ignore
 
-from graphql_relay.connection.arrayconnection import SizedSliceable
-from graphql_relay.connection.connectiontypes import (
+from graphql_relay.connection.array_connection import SizedSliceable
+from graphql_relay.connection.connection import (
     ConnectionCursor,
     EdgeConstructor,
     EdgeType,

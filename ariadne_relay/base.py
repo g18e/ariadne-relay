@@ -1,6 +1,6 @@
-import asyncio
 from dataclasses import dataclass
-from typing import Any, Awaitable, Callable, cast, Dict, Optional
+from inspect import isawaitable
+from typing import Any, Callable, cast, Dict, Optional
 
 from ariadne.types import Resolver
 from graphql import GraphQLObjectType, GraphQLResolveInfo
@@ -124,11 +124,11 @@ def create_connection_resolver(
             after=after, before=before, first=first, last=last
         )
         data = resolver(obj, info, connection_args, **kwargs)
-        if asyncio.iscoroutine(data):
+        if isawaitable(data):
             data = await data
         connection = factory(data, connection_args)
-        if asyncio.iscoroutine(connection):
-            connection = await cast(Awaitable[Any], connection)
+        if isawaitable(connection):
+            connection = await connection
         return connection
 
     return resolve_connection

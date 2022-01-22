@@ -1,7 +1,7 @@
 from typing import Optional
 
-from graphql_relay.connection.arrayconnection import SizedSliceable
-from graphql_relay.connection.connectiontypes import ConnectionType
+from graphql_relay.connection.array_connection import SizedSliceable
+from graphql_relay.connection.connection import ConnectionType
 
 from .base import BaseConnection, ConnectionArguments
 

@@ -1,6 +1,6 @@
 from graphql_relay import ConnectionCursor, Edge, from_global_id, PageInfo, to_global_id
-from graphql_relay.connection.arrayconnection import SizedSliceable
-from graphql_relay.connection.connectiontypes import (
+from graphql_relay.connection.array_connection import SizedSliceable
+from graphql_relay.connection.connection import (
     ConnectionType,
     EdgeConstructor,
     EdgeType,
