@@ -83,7 +83,7 @@ class NodeType:
                 self._resolve_id,
                 replace_existing,
             )
-        if self._resolve_instance is not None:
+        if self._resolve_instance is not None and graphql_type.name == self.name:
             _set_extension(
                 graphql_type,
                 INSTANCE_RESOLVER,
