@@ -20,3 +20,7 @@
 
 - Pin graphql-relay 3.1.3
 - Add python 3.10 to CLASSIFIERS in setup.py
+
+
+## 0.1.0a6 (2022-03-04)
+- Remove propagation of instance resolvers via NodeInterfaceType
