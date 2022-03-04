@@ -62,6 +62,16 @@ def test_node_interface_instance_resolver(
                 "id": global_id,
             }
         }
+        # a NodeInterfaceType instance resolver does not
+        # propagate to types that implement the interface
+        invalid_global_id = to_global_id("Qux", str(obj.id))
+        result = graphql_sync(
+            schema,
+            node_query,
+            variable_values={"id": invalid_global_id},
+        )
+        assert result.errors is None
+        assert result.data == {"node": None}
 
 
 def test_node_typename_resolver(
