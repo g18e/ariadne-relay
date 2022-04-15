@@ -1,13 +1,17 @@
-from graphql_relay import ConnectionCursor, Edge, from_global_id, PageInfo, to_global_id
-from graphql_relay.connection.array_connection import SizedSliceable
-from graphql_relay.connection.connection import (
+from graphql_relay import (
+    ConnectionCursor,
     ConnectionType,
+    Edge,
     EdgeConstructor,
     EdgeType,
+    from_global_id,
+    PageInfo,
     PageInfoConstructor,
     PageInfoType,
+    ResolvedGlobalId,
+    SizedSliceable,
+    to_global_id,
 )
-from graphql_relay.node.node import ResolvedGlobalId
 
 from .base import set_default_connection_factory
 from .connection import (
