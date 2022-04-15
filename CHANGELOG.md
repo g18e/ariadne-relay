@@ -24,3 +24,8 @@
 
 ## 0.1.0a6 (2022-03-04)
 - Remove propagation of instance resolvers via NodeInterfaceType
+
+
+## 0.1.0a7 (2022-04-15)
+- Restrict to ariadne<0.15.0
+- Bump graphql-relay to 3.1.5
