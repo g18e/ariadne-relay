@@ -17,13 +17,13 @@ try:
 except ImportError:  # Python < 3.8
     from typing_extensions import Protocol  # type: ignore
 
-from graphql_relay import connection_from_array_slice
-from graphql_relay.connection.array_connection import SizedSliceable
-from graphql_relay.connection.connection import (
+from graphql_relay import (
+    connection_from_array_slice,
     EdgeConstructor,
     EdgeType,
     PageInfoConstructor,
     PageInfoType,
+    SizedSliceable,
 )
 
 ConnectionType_T = TypeVar("ConnectionType_T", covariant=True)
