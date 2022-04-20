@@ -29,3 +29,8 @@
 ## 0.1.0a7 (2022-04-15)
 - Restrict to ariadne<0.15.0
 - Bump graphql-relay to 3.1.5
+
+
+## 0.1.0a8 (2022-04-20)
+- Unblock ariadne and graphql-relay dependencies
+- Remove support for python 3.6
