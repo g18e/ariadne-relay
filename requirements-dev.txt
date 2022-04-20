@@ -7,4 +7,3 @@ mypy
 pytest
 pytest-asyncio
 pytest-cov
-types-dataclasses; python_version < '3.7.0'
