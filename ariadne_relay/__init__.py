@@ -1,3 +1,8 @@
+"""Ariadne-Relay provides a toolset for implementing GraphQL servers
+in Python that conform to the Relay specification, using the
+Ariadne library."""
+__version__ = "0.1.0a8"
+
 from graphql_relay import (
     ConnectionCursor,
     ConnectionType,

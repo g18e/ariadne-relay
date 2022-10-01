@@ -1,9 +1,0 @@
-black
-codecov
-flake8
-flake8-builtins
-flake8-import-order
-mypy
-pytest
-pytest-asyncio
-pytest-cov
