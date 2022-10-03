@@ -176,7 +176,7 @@ the data untouched.
 
 ### Custom Factories
 Many deployments will benefit from customizing the connection factory. One example would be
-properly integrating a given ORM like Djano. Other examples might be extending the functionality
+properly integrating a given ORM like Django. Other examples might be extending the functionality
 of connections, or customizing how cursors are formed. The `BaseConnection` and `SnakeCaseBaseConnection`
 classes can be useful for this purpose.
 
