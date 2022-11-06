@@ -1,3 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ariadne-relay"
+description = """\
+  Ariadne-Relay provides a toolset for implementing GraphQL servers \
+  in Python that conform to the Relay specification, using the \
+  Ariadne library.\
+  """
+authors = [{ name = "General Intelligence Inc.", email = "info@g18e.com" }]
+dynamic = ["version"]
+readme = "README.md"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = ["ariadne>=0.15.0", "graphql-relay>=3.2.0"]
+
+
+[project.optional-dependencies]
+dev = ["black", "mypy", "flake8", "flake8-builtins", "flake8-import-order"]
+# `requests` is needed for Starlette's `TestClient`, but only for
+# Starlette versions below 0.21.0. When `ariadne` releases a new version
+# that depends on version 0.21.0 or above, replace the `requests` dependency
+# with `httpx` instead.
+test = ["pytest", "pytest-asyncio", "pytest-cov", "requests"]
+
+[project.urls]
+Source = "https://github.com/g18e/ariadne-relay"
+
+[tool.hatch.version]
+path = "ariadne_relay/__init__.py"
+
+[tool.hatch.envs.default]
+features = ["dev", "test"]
+
+[tool.hatch.envs.default.scripts]
+test = "coverage run -m pytest"
+
 [tool.black]
 line-length = 88
 target-version = ['py37', 'py38', 'py39', 'py310']
@@ -17,3 +66,24 @@ exclude = '''
   | snapshots
 )/
 '''
+
+[tool.isort]
+force_single_line = false
+include_trailing_comma = true
+known_first_party = "ariadne_relay"
+line_length = 88
+multi_line_output = 3
+no_lines_before = "LOCALFOLDER"
+profile = "google"
+
+[tool.mypy]
+files = ["ariadne_relay", "tests"]
+follow_imports = "silent"
+ignore_missing_imports = true
+strict = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
+
+[tool.coverage.run]
+source = ["ariadne_relay", "tests"]

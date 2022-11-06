@@ -16,7 +16,9 @@ The codebase is formatted with [Black](https://black.readthedocs.io/).  It is al
 
 Tests use [pytest](https://pytest.org/) with [Codecov](https://codecov.io/gh/g18e/ariadne-relay) for monitoring coverage.
 
-Dev requirements can be installed using `requirements-dev.txt`.
+Dev requirements can be installed using Pip extras. For example,
+to install all dependencies for doing local development and
+running the tests, run `pip install -e .[dev,test]`.
 
 
 ## Goals

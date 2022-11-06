@@ -1,3 +1,5 @@
+__version__ = "0.1.0a8"
+
 from graphql_relay import (
     ConnectionCursor,
     ConnectionType,
