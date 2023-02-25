@@ -26,12 +26,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install wheel
         pip install -e .[dev,test]
-    - name: Pytest
-      run: |
-        pytest --cov=ariadne_relay --cov=tests
+    - name: Run unit tests
+      run: hatch run test
     - uses: codecov/codecov-action@v1
-    - name: Linters
-      run: |
-        flake8
-        mypy
-        black --check .
+    - name: Run code quality tests
+      run: hatch run lint
