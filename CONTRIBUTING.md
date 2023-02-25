@@ -10,7 +10,7 @@ Please use [GitHub issues](https://github.com/g18e/ariadne-relay/issues) and [Gi
 
 ## Development setup
 
-Ariadne-Relay is written to support Python 3.7, 3.8, 3.9, and 3.10.
+Ariadne-Relay is written to support Python 3.7, 3.8, 3.9, 3.10, and 3.11.
 
 The codebase is formatted with [Black](https://black.readthedocs.io/).  It is also linted with [flake8] and strictly type-checked with [mypy](http://mypy-lang.org/index.html).
 
