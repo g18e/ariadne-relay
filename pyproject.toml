@@ -28,7 +28,7 @@ dependencies = ["ariadne>=0.15.0", "graphql-relay>=3.2.0"]
 
 
 [project.optional-dependencies]
-dev = ["black", "mypy", "flake8", "flake8-builtins", "flake8-import-order"]
+dev = ["black", "mypy<1.0", "flake8", "flake8-builtins", "flake8-import-order"]
 test = ["ariadne[dev,test]", "pytest", "pytest-asyncio", "pytest-cov"]
 
 [project.urls]
