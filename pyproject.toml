@@ -29,11 +29,7 @@ dependencies = ["ariadne>=0.15.0", "graphql-relay>=3.2.0"]
 
 [project.optional-dependencies]
 dev = ["black", "mypy", "flake8", "flake8-builtins", "flake8-import-order"]
-# `requests` is needed for Starlette's `TestClient`, but only for
-# Starlette versions below 0.21.0. When `ariadne` releases a new version
-# that depends on version 0.21.0 or above, replace the `requests` dependency
-# with `httpx` instead.
-test = ["pytest", "pytest-asyncio", "pytest-cov", "requests"]
+test = ["ariadne[dev,test]", "pytest", "pytest-asyncio", "pytest-cov"]
 
 [project.urls]
 Source = "https://github.com/g18e/ariadne-relay"
