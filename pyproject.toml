@@ -22,10 +22,10 @@ classifiers = [
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = ["ariadne>=0.15.0", "graphql-relay>=3.2.0"]
-
 
 [project.optional-dependencies]
 dev = ["black", "hatch", "mypy<1.0", "flake8", "flake8-builtins", "flake8-import-order"]
@@ -36,7 +36,7 @@ Source = "https://github.com/g18e/ariadne-relay"
 
 [tool.black]
 line-length = 88
-target-version = ['py37', 'py38', 'py39', 'py310']
+target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
 include = '\.pyi?$'
 exclude = '''
 /(
